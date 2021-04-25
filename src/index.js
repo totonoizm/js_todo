@@ -14,8 +14,27 @@ const onClickAdd = () => {
   // li生成
   const li = document.createElement("li");
   li.innerText = inputText; //constしたインプットテキストを取得してliへ入れる
-  div.appendChild(li); //divの子要素に各要素を設定
-  console.log(div);
+
+  //button生成
+  const completeButton = document.createElement("button");
+  completeButton.innerText = "完了";
+  completeButton.addEventListener("click", () => {
+    alert("kanryou");
+  });
+
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", () => {
+    // 押された削除ボタンの親タグ（div)を削除
+    const deleteTarget = deleteButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
+  });
+
+  //divの子要素に各要素を設定
+
+  div.appendChild(li);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
 
   // 未完了リストへ追加
   document.getElementById("incomplete-list").appendChild(div);
